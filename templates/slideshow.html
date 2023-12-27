@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bildershow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <style>
+        /* Stile für die Diashow anpassen */
+        .thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .thumbnail {
+            width: 200px; /* Passe die Größe der Miniaturbilder nach Bedarf an */
+            height: 200px; /* Passe die Größe der Miniaturbilder nach Bedarf an */
+            margin: 10px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+        .thumbnail img {
+            width: 100%; /* Die Bilder füllen die gesamte Breite der Miniaturvorschau */
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bildershow</h1>
+    <div class="thumbnails">
+        {% for image_name in image_names %}
+            <div class="thumbnail">
+                <a href="{{ url_for('static', filename='Bilder/' + image_name) }}" data-fancybox="gallery">
+                    <img src="{{ url_for('static', filename='Bilder/' + image_name) }}" alt="Bild">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Fancybox JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialisiere Fancybox
+            $('[data-fancybox="gallery"]').fancybox({
+                loop: true, // Aktiviere Endlos-Slideshow
+                transitionEffect: "circular", // Effekt beim Wechseln der Bilder
+                buttons: [
+                    "slideShow",
+                    "fullScreen",
+                    "thumbs",
+                    "close"
+                ],
+                thumbs: {
+                    autoStart: true // Thumbnails am Anfang automatisch anzeigen
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bild-Upload</title>
+    <style>
+        body {
+            background-image: url('/static/background.jpg'); /* Passe den Pfad entsprechend an */
+            background-size: cover;
+            /* Weitere CSS-Stile für den Hintergrund hier einfügen */
+        }
+        .menu {
+            list-style: none;
+            padding: 0;
+        }
+        .menu li {
+            display: inline;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bilder hochladen</h1>
+    <ul class="menu">
+        <li><a href="/slideshow">Bilder</a></li>
+    </ul>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="submit" value="Hochladen">
+    </form>
+</body>
+</html>
+
