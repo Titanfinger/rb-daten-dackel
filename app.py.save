@@ -23,7 +23,7 @@ def upload():
 def slideshow():
     image_names = os.listdir(app.config['UPLOAD_FOLDER'])
     return render_template('slideshow.html', image_names=image_names)
-
+buggy
 if __name__ == '__main__':
     app.run(debug=True)
 
